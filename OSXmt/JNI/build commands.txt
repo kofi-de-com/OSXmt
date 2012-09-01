@@ -1,0 +1,13 @@
+build:
+
+cc -m32 -c -I/System/Library/Frameworks/JavaVM.framework/Headers -ObjC ./OSXmtjnilib.c -o ./libOSXmt_i368.o
+cc -c -I/System/Library/Frameworks/JavaVM.framework/Headers -ObjC ./OSXmtjnilib.c -o ./libOSXmt_x68_64.o
+
+
+link:
+cc -m32 -dynamiclib -o libOSXmt_i368.jnilib ./libOSXmt_i368.o -framework JavaVM -F/System/Library/PrivateFrameworks -framework MultitouchSupport -framework Foundation
+cc -dynamiclib -o libOSXmt_x68_64.jnilib ./libOSXmt_x68_64.o -framework JavaVM -F/System/Library/PrivateFrameworks -framework MultitouchSupport -framework Foundation
+
+
+bundle:
+lipo libOSXmt_i368.jnilib libOSXmt_x68_64.jnilib -create -output libOSXmt.jnilib

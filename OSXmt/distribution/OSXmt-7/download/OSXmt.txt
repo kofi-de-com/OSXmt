@@ -25,13 +25,13 @@ category = I/O
 # repeating the name of your library here. Also, avoid saying anything redundant 
 # like mentioning that it's a library. This should start with a capitalized 
 # letter, and end with a period.
-sentence = Easy access to multitouch devices on OSX (e.g. Apple's Magic Trackpad or Magic Mouse).
+sentence = Provides easy access to multitouch devices on OS X (e.g. Apple's Magic Trackpad or Magic Mouse).
 
 # Additional information suitable for the Processing website. The value of
 # 'sentence' always will be prepended, so you should start by writing the
 # second sentence here. If your library only works on certain operating systems,
 # mention it here.
-paragraph = This library works on Apple OS X only. 
+paragraph = This library runs on OS X only. It has been tested against OS X Mountain Lion (10.8.1). 
 
 # Links in the 'sentence' and 'paragraph' attributes can be inserted using the
 # same syntax as for authors. 

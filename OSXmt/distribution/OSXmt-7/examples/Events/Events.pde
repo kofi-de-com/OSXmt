@@ -9,7 +9,7 @@ void setup() {
   
   rectMode(CENTER);
 
-  //println(OSXmt.getDeviceList());
+  println(OSXmt.getDeviceList());
   OSXmt.init(this, OSXmt.getDeviceList()[0], true, true);
 }
 
