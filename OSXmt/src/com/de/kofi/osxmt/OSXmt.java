@@ -103,7 +103,7 @@ public class OSXmt {
 					
 		if(catchCursor) {
 			Rectangle r = p.frame.getBounds();
-			robot.mouseMove(r.x+p.width/2, r.y+p.height/2);
+			robot.mouseMove(r.x+p.width/2+p.getX(), r.y+p.height/2+p.getY());
 		}
 
 		TouchPoint t = new TouchPoint(frame, timestamp, id, state, size,  x,  y,  vx, vy, angle, majorAxis, minorAxis);
