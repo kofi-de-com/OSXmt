@@ -12,18 +12,22 @@ public class TouchPoint {
 
 
 	public TouchPoint(int _frame, double _timestamp, int _id, int _state, float _touchPointSize, float _x, float _y, float _vx, float _vy, float _touchPointAngle, float _touchPointMajorAxis, float _touchPointMinorAxis) {
+		this(_frame, (long) (_timestamp*1000), _id, PointState.getFromInt(_state), _touchPointSize, _x, _y, _vx, _vy, _touchPointAngle, _touchPointMajorAxis, _touchPointMinorAxis);
+	}
+	
+	public TouchPoint(int _frame, long _timestamp, int _id, PointState _state, float _touchPointSize, float _x, float _y, float _vx, float _vy, float _touchPointAngle, float _touchPointMajorAxis, float _touchPointMinorAxis) {
 		frame = _frame;
-		startTimestamp = timestamp = (long) (_timestamp*1000);
+		startTimestamp = timestamp = _timestamp;
+		state = _state;
 		id = _id;
-		state = PointState.getFromInt(_state);
 		x = xStart = _x;
 		y = yStart = 1-_y;
 		vx = _vx;
-		vy = _vy;
+		vy = -_vy;
 		touchPointSize = _touchPointSize;
 		touchPointAngle = _touchPointAngle;
 		touchPointMajorAxis = _touchPointMajorAxis;
-		touchPointMinorAxis = _touchPointMinorAxis;
+		touchPointMinorAxis = _touchPointMinorAxis;	
 	}
 
 	public void update(TouchPoint tp) {
@@ -40,7 +44,7 @@ public class TouchPoint {
 			dx = tp.getX()-x;
 			dy = tp.getY()-y;
 			vx = tp.getVelocityX();
-			vy = -tp.getVelocityY();
+			vy = tp.getVelocityY();
 		}
 
 		x = tp.getX();
