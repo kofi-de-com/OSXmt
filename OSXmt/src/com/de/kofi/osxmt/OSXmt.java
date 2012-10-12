@@ -101,7 +101,7 @@ public class OSXmt {
 		if(p == null || (needsFocus && !p.frame.isFocused()))
 			return;
 					
-		if(catchCursor) {
+		if((!needsFocus || (needsFocus && p.frame.isFocused())) && catchCursor) {
 			Rectangle r = p.frame.getBounds();
 			robot.mouseMove(r.x+p.width/2+p.getX(), r.y+p.height/2+p.getY());
 		}
