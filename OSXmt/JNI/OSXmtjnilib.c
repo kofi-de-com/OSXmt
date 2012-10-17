@@ -1,3 +1,4 @@
+//  Copyright 2009 Wayne Keenan
 //  Copyright 2012 Konstantin Fick
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +13,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-//  OSXmtjnilib.c
+//
+//  OSXmtjnilib.c - binds to OSX Obj-c multitouch methods
 //
 //  Created by Konstantin Fick on 22/08/2012.
 //
 //  mail@kofi.de.com
+//
+//
+//	This is a MODIFIED version of TouchpadObservablejnilib.c
+//  Created by Wayne Keenan on 30/05/2009.
+//  wayne.keenan@gmail.com
+//
+//  The modification allows you to bind to a specific multitouch
+//  devices instead of binding to the fist one
+
 
 #include "com_de_kofi_osxmt_OSXmt.h"
 
