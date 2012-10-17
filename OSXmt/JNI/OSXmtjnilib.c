@@ -27,7 +27,11 @@
 //
 //  The modification allows you to bind to a specific multitouch
 //  devices instead of binding to the fist one
-
+//
+//  The added functionality was made possible by proof of concept published
+//  Costantino Pistagna <valvoline -at- gmail -dot- com> at
+//  http://hints.macworld.com/article.php?story=2009111308193783
+//
 
 #include "com_de_kofi_osxmt_OSXmt.h"
 
