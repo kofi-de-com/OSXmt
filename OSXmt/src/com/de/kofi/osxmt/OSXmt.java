@@ -204,7 +204,7 @@ public class OSXmt {
 		}
 	}
 	
-	public static String[] getDeviceList() { //TODO
+	public static String[] getDeviceList() { //TODO: add
 		if(deviceList == null)
 			deviceList = deviceList();
 
@@ -227,8 +227,6 @@ public class OSXmt {
 		if(initialized)
 			return;
 		initialized = true;
-		
-		startupNative(deviceId);
 		System.out.println("##library.name## ##library.prettyVersion## (##library.url##)");
 
 		p = _p;
@@ -263,6 +261,8 @@ public class OSXmt {
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}
+		
+		startupNative(deviceId);
 	}
 	
 	public static void addGeneralListener(TouchListener listener) {
