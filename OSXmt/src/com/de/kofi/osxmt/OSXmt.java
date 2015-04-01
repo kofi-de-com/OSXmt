@@ -37,6 +37,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import processing.core.*;
 
@@ -61,6 +62,8 @@ public class OSXmt {
 	public static double SCROLL_MIN_MOVEMENT = 0.06;
 
 	private static PApplet p;
+	private static ConcurrentLinkedQueue<TouchListener> generalListenersAddQueue = new ConcurrentLinkedQueue<TouchListener>();
+	private static ConcurrentLinkedQueue<TouchListener> generalListenersRemoveQueue = new ConcurrentLinkedQueue<TouchListener>();
 	private static ArrayList<TouchListener> generalListeners = new ArrayList<TouchListener>();
 	private static Method mtEvent, mtPress, mtRelease, mtDrag, mtScroll, mtTap, mtLongPress;
 	private static Robot robot;
@@ -99,7 +102,16 @@ public class OSXmt {
 	public static void mtcallback(int frame, double timestamp, int id, int state, float size, float x, float y, float vx, float vy, float angle, float majorAxis, float minorAxis, int lastOfFrame) {
 		if(p == null || (needsFocus && !p.frame.isFocused()))
 			return;
-					
+		
+		TouchListener queuedListener;
+		while((queuedListener = generalListenersAddQueue.poll()) != null) {
+			generalListeners.add(queuedListener);
+		}
+		queuedListener = null;
+		while((queuedListener = generalListenersRemoveQueue.poll()) != null) {
+			generalListeners.remove(queuedListener);
+		}
+				
 		if((!needsFocus || (needsFocus && p.frame.isFocused())) && catchCursor) {
 			Rectangle r = p.frame.getBounds();
 			robot.mouseMove(r.x+p.width/2+p.getX(), r.y+p.height/2+p.getY());
@@ -266,11 +278,11 @@ public class OSXmt {
 	}
 	
 	public static void addGeneralListener(TouchListener listener) {
-		generalListeners.add(listener);
+		generalListenersAddQueue.add(listener);
 	}
 	
 	public static void removeGeneralListener(TouchListener listener) {
-		generalListeners.remove(listener);
+		generalListenersRemoveQueue.add(listener);
 	}
 
 	public static void setCatchCursor(boolean state) {
