@@ -11,3 +11,6 @@ cc -dynamiclib -o libOSXmt_x68_64.jnilib ./libOSXmt_x68_64.o -framework JavaVM -
 
 bundle:
 lipo libOSXmt_i368.jnilib libOSXmt_x68_64.jnilib -create -output libOSXmt.jnilib
+
+deploy:
+cp libOSXmt.jnilib ../lib/libOSXmt.jnilib

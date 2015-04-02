@@ -178,7 +178,7 @@ JNIEXPORT jint JNICALL Java_com_de_kofi_osxmt_OSXmt_deregisterListener(JNIEnv *e
 	return 0;
 }
 
-JNIEXPORT jobjectArray JNICALL Java_com_de_kofi_osxmt_OSXmt_deviceList(JNIEnv *env, jclass this) { //TODO
+JNIEXPORT jobjectArray JNICALL Java_com_de_kofi_osxmt_OSXmt_deviceList(JNIEnv *env, jclass this) {
 	deviceList = (NSMutableArray*)MTDeviceCreateList(); // grab device list
 
 	jobjectArray ret;

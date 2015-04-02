@@ -216,7 +216,7 @@ public class OSXmt {
 		}
 	}
 	
-	public static String[] getDeviceList() { //TODO: add
+	public static String[] getDeviceList() {
 		if(deviceList == null)
 			deviceList = deviceList();
 
